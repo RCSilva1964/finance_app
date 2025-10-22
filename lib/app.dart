@@ -1,3 +1,4 @@
+import 'package:finance_app/features/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -6,10 +7,17 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(child: Text("Home")),
-      )
+    return MaterialApp(
+      home: SplashPage(
+        /* appBar: AppBar(backgroundColor: Colors.blue),
+        drawer: const Drawer(),
+        body: const Center(child: Text("Home")),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          backgroundColor: Colors.blue,
+          onPressed: () {},
+        ), */
+      ),
     );
   }
 }
