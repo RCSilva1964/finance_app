@@ -1,3 +1,5 @@
+import 'package:finance_app/common/constants/app_colors.dart';
+import 'package:finance_app/common/constants/app_text.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -12,16 +14,12 @@ class SplashPage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFF63B5AF), Color(0xFF438883)],
+            colors: AppColors.greenGradient,
           ),
         ),
-        child: const Text(
+        child: Text(
           'Minhas Finanças',
-          style: TextStyle(
-            fontSize: 40.0,
-            fontWeight: FontWeight.w700,
-            color: Colors.white,
-          ),
+          style: AppTextStyles.bigText.copyWith(color: AppColors.white),
         ),
       ),
     );
