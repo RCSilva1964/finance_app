@@ -1,5 +1,6 @@
 import 'package:finance_app/common/constants/app_colors.dart';
-import 'package:finance_app/common/constants/app_text.dart';
+import 'package:finance_app/common/constants/app_text_styles.dart';
+
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class SplashPage extends StatelessWidget {
           ),
         ),
         child: Text(
-          'Minhas Finanças',
+          'Minhas Contas',
           style: AppTextStyles.bigText.copyWith(color: AppColors.white),
         ),
       ),
