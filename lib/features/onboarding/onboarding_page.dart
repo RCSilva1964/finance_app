@@ -1,5 +1,6 @@
 import 'package:finance_app/common/constants/app_colors.dart';
 import 'package:finance_app/common/constants/app_text_styles.dart';
+import 'package:finance_app/common/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -30,7 +31,14 @@ class OnboardingPage extends StatelessWidget {
               color: AppColors.greenlightTwo,
             ),
           ),
-          ElevatedButton(onPressed: () {}, child: const Text('Iniciar')),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32.0,
+              vertical: 16.0,
+            ),
+            child: PrimaryButton(text: 'Vamos começar!', onPressed: () {}),
+          ),
+          const SizedBox(height: 16.0),
           Text(
             'Já tem uma conta? Entrar',
             style: AppTextStyles.smallText.copyWith(color: AppColors.grey),
