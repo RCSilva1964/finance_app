@@ -8,36 +8,34 @@ class PrimaryButton extends StatelessWidget {
 
   const PrimaryButton({super.key, this.onPressed, required this.text});
 
+  final BorderRadius _borderRadius = const BorderRadius.all(
+    Radius.circular(32.0),
+  );
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: const BorderRadius.all(Radius.circular(38.0)),
-      child: Ink(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(38.0)),
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: onPressed != null
-                ? AppColors.greenGradient
-                : AppColors.greyGradient,
-          ),
+    return Ink(
+      height: 64.0,
+      decoration: BoxDecoration(
+        borderRadius: _borderRadius,
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: onPressed != null
+              ? AppColors.greenGradient
+              : AppColors.greyGradient,
         ),
-        child: InkWell(
-          borderRadius: const BorderRadius.all(Radius.circular(38.0)),
-          onTap: onPressed,
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(38.0)),
-            ),
-            alignment: Alignment.center,
-            height: 64.0,
-            child: Text(
-              text,
-              style: AppTextStyles.mediumText18.copyWith(
-                color: AppColors.white,
-              ),
-            ),
+      ),
+      child: InkWell(
+        borderRadius: _borderRadius,
+        onTap: onPressed,
+        child: Container(
+          decoration: BoxDecoration(borderRadius: _borderRadius),
+          alignment: Alignment.center,
+          height: 64.0,
+          child: Text(
+            text,
+            style: AppTextStyles.mediumText18.copyWith(color: AppColors.white),
           ),
         ),
       ),
