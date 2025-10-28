@@ -1,26 +1,20 @@
 import 'dart:developer';
 
-import 'package:finance_app/common/constants/app_colors.dart';
-import 'package:finance_app/common/constants/app_text_styles.dart';
-import 'package:finance_app/common/widgets/multi_text_button.dart';
-import 'package:finance_app/common/widgets/primary_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../common/constants/app_colors.dart';
+import '../../common/constants/app_text_styles.dart';
+import '../../common/widgets/multi_text_button.dart';
+import '../../common/widgets/primary_button.dart';
 
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({super.key});
+class SigUpPage extends StatelessWidget {
+  const SigUpPage ({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: ListView(
         children: [
-          const SizedBox(height: 60.0),
-          Expanded(
-            child: Container(
-              color: AppColors.iceWhite,
-              child: Image.asset('assets/images/onboarding_image.png'),
-            ),
-          ),
           Text(
             'Gaste sabiamente,',
             style: AppTextStyles.mediumText.copyWith(
@@ -33,6 +27,14 @@ class OnboardingPage extends StatelessWidget {
               color: AppColors.greenlightTwo,
             ),
           ),
+          Expanded(
+            child: Image.asset(
+                'assets/images/sign_up_image.png'
+            ),
+          ),
+          TextFormField(),
+          const TextField(),
+
           Padding(
             padding: const EdgeInsets.only(
                 left: 32.0,
@@ -40,14 +42,13 @@ class OnboardingPage extends StatelessWidget {
                 top: 16.0
             ),
             child: PrimaryButton(
-                text: 'Vamos começar!',
-                onPressed: () {},
+              text: 'Criar Conta',
+              onPressed: () => log('Criar Conta'),
             ),
           ),
           const SizedBox(height: 16.0),
-
           MultiTextButton(
-            onPressed: () => log('Tap'),
+            onPressed: () => log('Entrar'),
             children: [
               Text(
                 'Já tem uma conta?',
@@ -61,7 +62,6 @@ class OnboardingPage extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 40.0),
         ],
       ),
     );
