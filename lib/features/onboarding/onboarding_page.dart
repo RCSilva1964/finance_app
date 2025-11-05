@@ -24,13 +24,13 @@ class OnboardingPage extends StatelessWidget {
           Text(
             'Gaste sabiamente,',
             style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenlightTwo,
+              color: AppColors.greenTwo,
             ),
           ),
           Text(
             'Poupe mais!',
             style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenlightTwo,
+              color: AppColors.greenTwo,
             ),
           ),
           Padding(
@@ -56,7 +56,7 @@ class OnboardingPage extends StatelessWidget {
               Text(
                 ' Entrar',
                 style: AppTextStyles.smallText.copyWith(
-                  color: AppColors.greenlightTwo,
+                  color: AppColors.greenTwo,
                 ),
               ),
             ],
