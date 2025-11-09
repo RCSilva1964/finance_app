@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:finance_app/common/utils/uppercase_text_formatter.dart';
+import 'package:finance_app/common/utils/validator.dart';
 import 'package:finance_app/common/widgets/password_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,15 @@ import '../../common/widgets/multi_text_button.dart';
 import '../../common/widgets/primary_button.dart';
 
 class SigUpPage extends StatefulWidget {
-  const SigUpPage ({super.key});
+  const SigUpPage({super.key});
 
   @override
   State<SigUpPage> createState() => _SigUpPageState();
 }
 
 class _SigUpPageState extends State<SigUpPage> {
-
   final _formKey = GlobalKey<FormState>();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,78 +30,55 @@ class _SigUpPageState extends State<SigUpPage> {
           Text(
             'Gaste sabiamente,',
             textAlign: TextAlign.center,
-            style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenTwo,
-            ),
+            style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
           ),
           Text(
             textAlign: TextAlign.center,
             'Poupe mais!',
-            style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenTwo,
-            ),
+            style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
           ),
-          Expanded(
-            child: Image.asset(
-                'assets/images/sign_up_image.png'
-            ),
-          ),
+          //Expanded(
+          // child:
+          Image.asset('assets/images/sign_up_image.png'),
+          //),
           Form(
             key: _formKey,
-              child: Column(
-                children: [
-                  CustomTextFormField(
-                    labelText: "Nome:",
-                    hintText: "Digite seu Nome:",
-                    inputFormatters: [
-                      UpperCaseTextInputFormatter(),
-                    ],
-                    validator: (value) {
-                      if(value != null && value.isEmpty) {
-                        return "Esse campo não pode ser vazio!";
-                      }
-                      return null;
-                    },
+            child: Column(
+              children: [
+                CustomTextFormField(
+                  labelText: "Nome:",
+                  hintText: "Digite seu Nome:",
+                  // inputFormatters: [UpperCaseTextInputFormatter()],
+                  validator: Validator.validateName,
+                ),
+                CustomTextFormField(
+                  labelText: "E-mail:",
+                  hintText: "Digite seu e-mail:",
+                  validator: Validator.validateEmail,
+                ),
+
+                PasswordFormField(
+                  controller: _passwordController,
+                  labelText: "Digite sua senha:",
+                  hintText: "********",
+                  validator: Validator.validatePassword,
+                  helperText:
+                      "Deve ter ao menos 8 caracteres, sendo ao menos uma letra maiúscula e um número",
+                ),
+
+                PasswordFormField(
+                  labelText: "Confirme sua senha:",
+                  hintText: "********",
+                  validator: (value) => Validator.validateConfirmPassword(
+                    value,
+                    _passwordController.text,
                   ),
-                  CustomTextFormField(
-                    labelText: "E-mail:",
-                    hintText: "Digite seu e-mail:",
-                    validator: (value) {
-                      if(value != null && value.isEmpty) {
-                        return "Esse campo não pode ser vazio!";
-                      }
-                      return null;
-                    },
-                  ),
-                  PasswordFormField(
-                    labelText: "Digite sua senha:",
-                    hintText: "********",
-                    validator: (value) {
-                      if(value != null && value.isEmpty) {
-                        return "Esse campo não pode ser vazio!";
-                      }
-                      return null;
-                    },
-                  ),
-                  PasswordFormField(
-                    labelText: "Confirme sua senha:",
-                    hintText: "********",
-                    validator: (value) {
-                      if(value != null && value.isEmpty) {
-                        return "Esse campo não pode ser vazio!";
-                      }
-                      return null;
-                    },
-                  )
-                ],
-              )
+                ),
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-                left: 32.0,
-                right: 32.0,
-                top: 16.0
-            ),
+            padding: const EdgeInsets.only(left: 32.0, right: 32.0, top: 16.0),
             child: PrimaryButton(
               text: 'Criar Conta',
               onPressed: () {
