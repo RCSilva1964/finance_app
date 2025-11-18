@@ -5,6 +5,7 @@ import 'package:finance_app/common/utils/validator.dart';
 import 'package:finance_app/common/widgets/password_form_field.dart';
 import 'package:finance_app/features/sign_up/sign_up_controller.dart';
 import 'package:finance_app/features/sign_up/sign_up_state.dart';
+import 'package:finance_app/service/mock_auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../common/constants/app_colors.dart';
@@ -24,12 +25,17 @@ class SigUpPage extends StatefulWidget {
 
 class _SigUpPageState extends State<SigUpPage> {
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _controller = SignUpController();
+  final _controller = SignUpController(MockAuthService());
 
   @override
   void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -57,8 +63,13 @@ class _SigUpPageState extends State<SigUpPage> {
       }
 
       if (_controller.state is SignUpErrorState) {
+        final error = _controller.state as SignUpErrorState;
         Navigator.pop(context);
-        customModalBottomSheet(context);
+        customModalBottomSheet(
+          context,
+          content: error.message,
+          buttonText: "Tentar Novamente.",
+        );
       }
     });
   }
@@ -87,12 +98,14 @@ class _SigUpPageState extends State<SigUpPage> {
             child: Column(
               children: [
                 CustomTextFormField(
+                  controller: _nameController,
                   labelText: "Nome:",
                   hintText: "Digite seu Nome:",
                   // inputFormatters: [UpperCaseTextInputFormatter()],
                   validator: Validator.validateName,
                 ),
                 CustomTextFormField(
+                  controller: _emailController,
                   labelText: "E-mail:",
                   hintText: "Digite seu e-mail:",
                   validator: Validator.validateEmail,
@@ -126,7 +139,11 @@ class _SigUpPageState extends State<SigUpPage> {
                 final valid =
                     _formKey.currentState != _formKey.currentState!.validate();
                 if (valid) {
-                  _controller.doSignUp();
+                  _controller.signUp(
+                    name: _nameController.text,
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
                 } else {
                   log("erro ao logar");
                 }
