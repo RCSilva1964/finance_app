@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:finance_app/common/constants/app_colors.dart';
 import 'package:finance_app/common/constants/app_text_styles.dart';
+import 'package:finance_app/common/constants/routes.dart';
 import 'package:finance_app/common/widgets/multi_text_button.dart';
 import 'package:finance_app/common/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -23,25 +24,19 @@ class OnboardingPage extends StatelessWidget {
           ),
           Text(
             'Gaste sabiamente,',
-            style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenTwo,
-            ),
+            style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
           ),
           Text(
             'Poupe mais!',
-            style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenTwo,
-            ),
+            style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-                left: 32.0,
-                right: 32.0,
-                top: 16.0
-            ),
+            padding: const EdgeInsets.only(left: 32.0, right: 32.0, top: 16.0),
             child: PrimaryButton(
-                text: 'Vamos começar!',
-                onPressed: () {},
+              text: 'Vamos começar!',
+              onPressed: () {
+                Navigator.pushNamed(context, NamedRoute.signUp);
+              },
             ),
           ),
           const SizedBox(height: 16.0),

@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:finance_app/common/utils/uppercase_text_formatter.dart';
 import 'package:finance_app/common/utils/validator.dart';
 import 'package:finance_app/common/widgets/password_form_field.dart';
 import 'package:finance_app/features/sign_up/sign_up_controller.dart';
@@ -16,14 +15,14 @@ import '../../common/widgets/custom_text_form_field.dart';
 import '../../common/widgets/multi_text_button.dart';
 import '../../common/widgets/primary_button.dart';
 
-class SigUpPage extends StatefulWidget {
-  const SigUpPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<SigUpPage> createState() => _SigUpPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SigUpPageState extends State<SigUpPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
