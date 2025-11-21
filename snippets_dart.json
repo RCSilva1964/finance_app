@@ -1,0 +1,40 @@
+{
+	"Controller": {
+		"prefix": "controller",
+		"description": "Cria um template de Controller",
+		"body": [
+			"import 'package:flutter/foundation.dart';",
+			"//TODO: import states",
+			"",
+			"class ${1:MyClass}Controller extends ChangeNotifier {",
+			" //TODO: inject service",
+			" //TODO: constructor",
+			"",
+			"class ${1:MyClass}State _state = ${1:MyClass}StateInitial();",
+			"",
+			" $${1:MyClass}State get state => _state;",
+			"",
+			" void _changeState(${1:MyClass}State newState) {",
+			"   _state = newState;",
+			"   notifyListeners();",
+			" }",
+			"",
+			"}"
+		]
+	},
+	"State": {
+		"prefix": "state",
+		"description": "Cria um template de State",
+		"body": [
+			"abstract class ${1:MyClass}State {}",
+			"",
+			"class ${1:MyClass}StateInitial extends ${1:MyClass}State {}",
+			"",
+			"class ${1:MyClass}StateLoading extends ${1:MyClass}State {}",
+			"",
+			"class ${1:MyClass}StateSuccess extends ${1:MyClass}State {}",
+			"",
+			"class ${1:MyClass}StateError extends ${1:MyClass}State {}"
+		]
+	}
+}
