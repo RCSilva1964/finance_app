@@ -42,7 +42,7 @@ class OnboardingPage extends StatelessWidget {
           const SizedBox(height: 16.0),
 
           MultiTextButton(
-            onPressed: () => log('Tap'),
+            onPressed: () => Navigator.pushNamed(context, NamedRoute.signIn),
             children: [
               Text(
                 'Já tem uma conta?',
