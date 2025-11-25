@@ -5,7 +5,7 @@ import 'package:finance_app/common/widgets/custom_circular_progress_indicator.da
 import 'package:finance_app/features/splash/splash_controller.dart';
 import 'package:finance_app/features/splash/splash_state.dart';
 import 'package:finance_app/locator.dart';
-import 'dart:developer';
+// import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
@@ -25,9 +25,9 @@ class _SplashPageState extends State<SplashPage> {
     _splashController.isUserLogged();
     _splashController.addListener(() {
       if (_splashController.state is SplashStateSuccess) {
-        log('navegar para home');
+        Navigator.pushReplacementNamed(context, NamedRoute.home);
       } else {
-        log('navegar para onboarding');
+        Navigator.pushReplacementNamed(context, NamedRoute.initial);
       }
     });
   }
