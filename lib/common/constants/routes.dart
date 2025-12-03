@@ -6,4 +6,10 @@ class NamedRoute {
   static const String signUp = "/sign_up";
   static const String signIn = "/sign_in";
   static const String home = "/home";
+  static const String stats = "/stats";
+  static const String wallet = "/wallet";
+  static const String profile = "/profile";
+  static const String transaction = "/transaction";
+  static const String forgotPassword = "/forgot-password";
+  static const String checkYourEmail = "/check-your-email";
 }
