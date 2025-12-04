@@ -6,6 +6,7 @@ import '../mock/mock_classes.dart';
 
 void main() {
   late MockFirebaseAuthService mockFirebaseAuthService;
+  // ignore: unused_local_variable
   late UserModel user;
 
   setUp(() {
