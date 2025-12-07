@@ -1,5 +1,7 @@
+import 'package:finance_app/features/home/home_controller.dart';
 import 'package:finance_app/features/sign_in/sign_in_controller.dart';
 import 'package:finance_app/features/splash/splash_controller.dart';
+import 'package:finance_app/repositories/transaction_repository.dart';
 import 'package:finance_app/service/auth_service.dart';
 import 'package:finance_app/service/firebase_auth_service.dart';
 import 'package:finance_app/service/secure_storage.dart';
@@ -21,5 +23,13 @@ void setupDependencies() {
 
   locator.registerFactory<SignUpController>(
     () => SignUpController(locator.get<AuthService>()),
+  );
+
+  locator.registerFactory<TransactionRepository>(
+    () => TransactionRepositoryImpl(),
+  );
+
+  locator.registerLazySingleton<HomeController>(
+    () => HomeController(locator.get<TransactionRepository>()),
   );
 }

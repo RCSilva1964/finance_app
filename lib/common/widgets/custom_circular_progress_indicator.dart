@@ -3,10 +3,18 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
 class CustomCircularProgressIndicator extends StatelessWidget {
-  const CustomCircularProgressIndicator({super.key});
+  final Color? color;
+  const CustomCircularProgressIndicator({
+    super.key,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator(color: AppColors.iceWhite);
+    return Center(
+        child: CircularProgressIndicator(
+            color: color ?? AppColors.iceWhite,
+        )
+    );
   }
 }
