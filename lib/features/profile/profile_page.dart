@@ -1,3 +1,6 @@
+import 'package:finance_app/locator.dart';
+import 'package:finance_app/service/auth_service.dart';
+import 'package:finance_app/service/secure_storage.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -15,6 +18,25 @@ class _ProfilePageState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return const Scaffold(body: Center(child: Text("Profile")));
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Profile"),
+            TextButton(
+              onPressed: () async {
+                await locator.get<AuthService>().signOut();
+                await SecureStorage().deleteAll();
+                if (mounted) {
+                  Navigator.popUntil(context, ModalRoute.withName('/'));
+                }
+              },
+              child: Text("Sair"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
